@@ -4,6 +4,9 @@
  */
 function db_load_site_headlines(websites, div, tag) {
 	var response_counter = 0;
+	if ( !div ) {
+		return false;
+	}
 	jQuery.each(websites, function(key, website) {
 		if (tag) {
 			var request_url = website + 'api/get_tag_posts/?count=1&slug='+tag;
