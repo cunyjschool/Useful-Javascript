@@ -18,12 +18,12 @@ function db_load_site_headlines(websites, div, tag) {
 			dataType: 'jsonp',
 			success: function(data) {
 				var html = '';
-				if ( data.status == 'ok' ) {
+				if ( data.status == 'ok' && data.posts.length > 0 ) {
 					html += '<h4>';
 					if ( data.posts[0].author.first_name && data.posts[0].author.last_name ) {
-						html += data.posts[0].author.first_name + ' ' + data.posts[0].author.last_name + ': ';
+						html += '<strong>' + data.posts[0].author.first_name + ' ' + data.posts[0].author.last_name + '</strong>: ';
 					} else if ( data.posts[0].author.first_name ) {
-						html += data.posts[0].author.first_name + ': ';
+						html += '<strong>' + data.posts[0].author.first_name + '</strong>: ';
 					}
 					html += '<a href="' + data.posts[0].url + '">' + data.posts[0].title + '</a></h4>';
 					html += '<p>' + data.posts[0].excerpt + '</p>';
